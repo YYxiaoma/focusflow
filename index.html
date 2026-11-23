@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FocusFlow · 专注时钟</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">◷</span>
+      <div>
+        <h1>FocusFlow</h1>
+        <p class="sub">专注时钟 · 把时间切回自己的节奏</p>
+      </div>
+    </div>
+    <button id="themeBtn" class="ghost" title="切换主题">深色 / 浅色</button>
+  </header>
+
+  <main class="layout">
+    <section class="panel timer-panel">
+      <div class="mode-row">
+        <button class="mode" data-mode="focus">专注 25′</button>
+        <button class="mode" data-mode="shortBreak">短休息 5′</button>
+        <button class="mode" data-mode="longBreak">长休息 15′</button>
+      </div>
+
+      <div class="ring-wrap">
+        <svg class="ring" viewBox="0 0 240 240" aria-hidden="true">
+          <circle class="ring-bg" cx="120" cy="120" r="104"></circle>
+          <circle id="ringFg" class="ring-fg" cx="120" cy="120" r="104"></circle>
+        </svg>
+        <div class="ring-center">
+          <div id="timeText" class="time">25:00</div>
+          <div id="phaseText" class="phase">准备开始</div>
+          <div id="roundText" class="round">第 1 段 · 今日 0 段</div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button id="startBtn" class="primary">开始</button>
+        <button id="resetBtn" class="ghost">重置</button>
+        <button id="skipBtn" class="ghost">跳过</button>
+      </div>
+
+      <label class="task-field">
+        <span>这轮要做什么</span>
+        <input id="taskInput" type="text" maxlength="24" placeholder="例如：写周报 / 读文档">
+      </label>
+
+      <p class="hint">空格 开始暂停 · R 重置 · S 跳过</p>
+    </section>
+
+    <aside class="side">
+      <section class="panel stats">
+        <h2>今日</h2>
+        <div class="stat-grid">
+          <div class="stat"><b id="todayCount">0</b><span>专注段数</span></div>
+          <div class="stat"><b id="todayMin">0</b><span>专注分钟</span></div>
+          <div class="stat"><b id="streak">0</b><span>连续天数</span></div>
+        </div>
+        <h3>最近 7 天</h3>
+        <div id="bars" class="bars"></div>
+      </section>
+
+      <section class="panel log">
+        <h2>今日记录</h2>
+        <ul id="logList" class="log-list"></ul>
+      </section>
+    </aside>
+  </main>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
